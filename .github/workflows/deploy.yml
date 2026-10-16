@@ -29,7 +29,7 @@ jobs:
         run: |
           REV=$(git rev-parse --short HEAD)
           git init
-          git remote add upstream https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/rust-lang/api-guidelines
+          git remote add upstream "https://x-access-token:${GH_TOKEN}@github.com/rust-lang/api-guidelines"
           git config user.name "Rust API Guidelines"
           git config user.email "libs@rust-lang.org"
           git add -A .
@@ -37,3 +37,4 @@ jobs:
           git push -q upstream HEAD:refs/heads/gh-pages --force
         env:
           GH_REPO: ${{github.repository}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
