@@ -33,5 +33,7 @@ jobs:
           git config user.name "Rust API Guidelines"
           git config user.email "libs@rust-lang.org"
           git add -A .
-          git commit -qm "API Guidelines @ ${{github.repository}}@${REV}"
+          git commit -qm "API Guidelines @ ${GH_REPO}@${REV}"
           git push -q upstream HEAD:refs/heads/gh-pages --force
+        env:
+          GH_REPO: ${{github.repository}}
